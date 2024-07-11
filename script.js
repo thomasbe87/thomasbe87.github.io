@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
         markers: false
       }
     })
-    .to("img", {
+    .to(".img-move", {
       scale: 1.5,
       z: 450,
       transformOrigin: "center center",
