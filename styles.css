@@ -37,11 +37,11 @@ body {
 
 h1 {
   position: absolute;
-  top: 35vh;
+  top: 30vh;
   font-size: 4em;
   font-weight: bold;
-  width: 50vw;
-  left: 25vw;
+  width: 54vw;
+  left: 23vw;
   text-align: center;
   line-height: 1.2em;
   text-shadow: 4px 4px #B6718C;
@@ -105,6 +105,7 @@ blockquote {
   color: #143d5d;
   font-weight: bolder;
   font-family: 'Poppins';
+  text-shadow: 1px 1px white;
 }
 
 .slide-text {
@@ -137,12 +138,12 @@ blockquote {
   letter-spacing: 1px;
   border-radius: 10px;
   max-width: 400px;
-  height: 530px;
+  height: 500px;
 }
 
 .box-arrow {
   width: 100px;
-  height: 100px;
+  height: 90px;
   display: block;
   text-align: center;
   line-height: 2.2;
@@ -152,8 +153,8 @@ blockquote {
 }
 
 .box-arrow span {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: block;
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
@@ -176,7 +177,7 @@ blockquote {
   }
   60% {
     opacity: 1;
-    transform: rotate(45deg) translate(30px, 30px);
+    transform: rotate(45deg) translate(25px, 25px);
   }
   100% {
     opacity: 0;
@@ -200,7 +201,7 @@ blockquote {
 }
 
 .content .section.hero {
-  background-image: url(https://img.static-rmg.be/a/view/q75/w/h/6242101/plane-jpg.jpg);
+  background-image: url(https://img.static-rmg.be/a/view/q75/w/h/6247686/plane2-jpg.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -285,6 +286,71 @@ blockquote {
 
 .link-box a {
   color: white;
+}
+
+
+/*** World map ***/
+
+.info-country {
+  text-align: center;
+  font-size: 2em;
+  max-width: 100%;
+}
+
+#country-name {
+  font-weight: bolder;
+  font-size: 1.4em;
+  color: #b71b54;
+  line-height: 1.5em;
+}
+
+.world-outline {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-width: 1.0px;
+}
+
+.back-country {
+  fill: #1961ac;
+  stroke: #fff;
+  stroke-width: 0.0px;
+  stroke-linejoin: round;
+}
+
+.back-line {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: 0;
+  stroke-width: .5px;
+}
+
+.country {
+  fill: #1961ac;
+  stroke: #aaaaaa;
+  stroke-width: .5px;
+  stroke-linejoin: round;
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: 0;
+  stroke-width: .5px;
+}
+
+.globe-background, .globe-background-back {
+    fill: #1961ac;
+}
+
+.world-map {
+  text-align: center;
+  font-size: 1.7em;
+}
+
+.svg-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 
