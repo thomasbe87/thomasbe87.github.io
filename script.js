@@ -30,24 +30,32 @@ window.addEventListener("load", () => {
       willChange: "transform, opacity"
     });
 
-  const animateBlockquote = (blockquote) => {
-    gsap.from(blockquote, {
-      scale: 1.3,
-      opacity: 0,
-      transformOrigin: "center center",
+const animateBlockquote = (blockquote) => {
+  console.log("Animating blockquote:", blockquote);
+  gsap.fromTo(blockquote, 
+    { scale: 1.3, opacity: 0 },
+    {
+      scale: 1,
+      opacity: 1,
+      duration: 1,
       ease: "power1.inOut",
-      willChange: "transform, opacity",
       scrollTrigger: {
         trigger: blockquote,
         start: "top 80%",
         end: "top 40%",
         scrub: true,
-        markers: false
+        markers: true, // Activez ceci temporairement pour le débogage
+        onEnter: () => console.log("Entering blockquote animation"),
+        onLeave: () => console.log("Leaving blockquote animation")
       }
-    });
-  };
+    }
+  );
+};
 
-  document.querySelectorAll("blockquote").forEach(animateBlockquote);
+document.addEventListener("DOMContentLoaded", () => {
+  const blockquotes = document.querySelectorAll("blockquote");
+  console.log("Found blockquotes:", blockquotes.length);
+  blockquotes.forEach(animateBlockquote);
 });
 
 
