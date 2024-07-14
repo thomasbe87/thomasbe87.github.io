@@ -35,27 +35,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Animation des blockquotes
-  const animateBlockquote = (blockquote) => {
-    console.log("Animating blockquote:", blockquote);
-    gsap.fromTo(blockquote, 
-      { scale: 1.3, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: blockquote,
-          start: "top 80%",
-          end: "top 40%",
-          scrub: true,
-          markers: true, // À désactiver en production
-          onEnter: () => console.log("Entering blockquote animation"),
-          onLeave: () => console.log("Leaving blockquote animation")
-        }
+const animateBlockquote = (blockquote) => {
+  console.log("Setting up animation for blockquote:", blockquote);
+  
+  gsap.fromTo(blockquote, 
+    { 
+      scale: 1.1, 
+      opacity: 0,
+      y: 50 // Commence légèrement en dessous de sa position finale
+    },
+    {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: blockquote,
+        start: "top 70%", // Commence quand le haut de la blockquote atteint 70% de la hauteur de la fenêtre
+        end: "top 30%", // Se termine quand le haut de la blockquote atteint 30% de la hauteur de la fenêtre
+        toggleActions: "play none none reverse", // Joue l'animation en entrant, la reverse en sortant
+        scrub: 0.5, // Lisse l'animation pendant le défilement
+        markers: true, // À désactiver en production
+        onEnter: () => console.log("Entering blockquote animation"),
+        onLeave: () => console.log("Leaving blockquote animation"),
+        onEnterBack: () => console.log("Entering blockquote animation (reverse)"),
+        onLeaveBack: () => console.log("Leaving blockquote animation (reverse)")
       }
-    );
-  };
+    }
+  );
+};
 
   const blockquotes = document.querySelectorAll("blockquote");
   console.log("Found blockquotes:", blockquotes.length);
