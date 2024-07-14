@@ -6,69 +6,65 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Attente du chargement complet du DOM
 document.addEventListener("DOMContentLoaded", () => {
-  // Animation principale
-  const mainTimeline = gsap.timeline({
+  // Animation principale (pour la section épinglée)
+  const mainSection = document.querySelector(".wrapper");
+  
+  gsap.timeline({
     scrollTrigger: {
-      trigger: ".wrapper",
+      trigger: mainSection,
       start: "top top",
       end: "+=150%",
       pin: true,
       scrub: true,
-      markers: true
+      markers: true // À désactiver en production
     }
+  })
+  .to(".img-move", {
+    scale: 1.5,
+    z: 450,
+    transformOrigin: "center center",
+    ease: "power1.inOut",
+  })
+  .from("h1", {
+    scale: 2,
+    opacity: 0,
+    transformOrigin: "center center",
+    ease: "power1.inOut",
   });
 
-  mainTimeline
-    .to(".img-move", {
-      scale: 1.5,
-      z: 450,
-      transformOrigin: "center center",
-      ease: "power1.inOut",
-      willChange: "transform"
-    })
-    .from("h1", {
-      scale: 2,
-      opacity: 0,
-      transformOrigin: "center center",
-      ease: "power1.inOut",
-      willChange: "transform, opacity"
-    });
-
-  // Animation des blockquotes
-const animateBlockquote = (blockquote) => {
-  console.log("Setting up animation for blockquote:", blockquote);
-  
-  gsap.fromTo(blockquote, 
-    { 
-      scale: 1.1, 
-      opacity: 0,
-      y: 50 // Commence légèrement en dessous de sa position finale
-    },
-    {
-      scale: 1,
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: blockquote,
-        start: "top 70%", // Commence quand le haut de la blockquote atteint 70% de la hauteur de la fenêtre
-        end: "top 30%", // Se termine quand le haut de la blockquote atteint 30% de la hauteur de la fenêtre
-        toggleActions: "play none none reverse", // Joue l'animation en entrant, la reverse en sortant
-        scrub: 0.5, // Lisse l'animation pendant le défilement
-        markers: true, // À désactiver en production
-        onEnter: () => console.log("Entering blockquote animation"),
-        onLeave: () => console.log("Leaving blockquote animation"),
-        onEnterBack: () => console.log("Entering blockquote animation (reverse)"),
-        onLeaveBack: () => console.log("Leaving blockquote animation (reverse)")
+  // Animation des blockquotes (en dehors de la section épinglée)
+  const animateBlockquote = (blockquote) => {
+    gsap.fromTo(blockquote, 
+      { 
+        scale: 1.1, 
+        opacity: 0,
+        y: 50
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: blockquote,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+          scrub: 0.5,
+          markers: true, // À désactiver en production
+          onEnter: () => console.log("Entering blockquote animation", blockquote),
+          onLeave: () => console.log("Leaving blockquote animation", blockquote)
+        }
       }
-    }
-  );
-};
+    );
+  };
 
-  const blockquotes = document.querySelectorAll("blockquote");
+  // Sélectionnez uniquement les blockquotes en dehors de la section épinglée
+  const blockquotes = document.querySelectorAll("body > blockquote, body > *:not(.wrapper) blockquote");
   console.log("Found blockquotes:", blockquotes.length);
   blockquotes.forEach(animateBlockquote);
+});
 
   // Données des pays
   const countries = [
