@@ -96,6 +96,7 @@ blockquote {
   color: white;
   transform: skew(0deg, -6deg);
   text-shadow: 2px 1px #143d5d;
+  opacity: 0;
 }
 
 .big-number {
