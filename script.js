@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       end: "+=150%",
       pin: true,
       scrub: true,
-      markers: false
+      markers: true
     }
   });
 
