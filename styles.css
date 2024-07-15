@@ -30,7 +30,7 @@ body {
 }
 
 .parallax-image {
-  width: 50%;
+  max-width: 1200px;
   margin: auto;
   display: block;
 }
@@ -192,8 +192,6 @@ blockquote {
   left: 50%;
   position: absolute;
 }
-
-
 
 .box-arrow span {
   width: 25px;
@@ -413,6 +411,12 @@ blockquote {
   display: flex;
   align-content: center;
   justify-content: center;
+}
+
+.right-top {
+  position: absolute;
+  right: 10px;
+  font-family: "Poppins";
 }
 
 
