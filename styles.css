@@ -454,4 +454,12 @@ blockquote {
 .parallax-image {
   width: 100%;
 }
+
+.right-top {
+  position: absolute;
+  right: 5px;
+  font-family: "Poppins";
+  font-size: 0.8em;
+  top: 6px;
+}
 }
