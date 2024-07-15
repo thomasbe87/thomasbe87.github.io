@@ -446,4 +446,8 @@ blockquote {
   left: -15px;
   position: relative;
 }
+
+.parallax-image {
+  width: 100%;
+}
 }
